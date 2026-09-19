@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f5f1" />
+  <title>同账 · Together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark"><span class="brand-dot"></span><span>同账</span></div>
+      <button class="icon-button" aria-label="通知"><span class="notification-dot"></span>⌁</button>
+    </header>
+
+    <section class="screen" id="home-screen">
+      <div class="greeting-row">
+        <div>
+          <p class="eyebrow">WEDNESDAY · 18 SEP</p>
+          <h1>晚上好，<em>小明</em></h1>
+          <p class="muted">和小红一起生活的第 428 天</p>
+        </div>
+        <div class="couple-avatars" aria-label="小明和小红">
+          <span class="avatar avatar-you">明</span><span class="avatar avatar-her">红</span>
+        </div>
+      </div>
+
+      <section class="hero-balance">
+        <p class="section-label">本月一起花了</p>
+        <div class="hero-amount"><span>¥</span>3,260</div>
+        <div class="balance-trend"><span class="trend-up">↗ 12.4%</span><span>比上月多一点点</span></div>
+        <div class="budget-track"><span style="width: 64%"></span></div>
+        <div class="budget-caption"><span>本月预算 ¥5,000</span><span>还剩 ¥1,740</span></div>
+      </section>
+
+      <section class="settlement-panel">
+        <div class="settlement-copy"><span class="status-icon">↗</span><div><p class="section-label">当前状态</p><h2>小红待和小明结算</h2><div class="settlement-amount">¥186</div></div></div>
+        <button class="text-button" id="settle-btn">去结算 <span>→</span></button>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><p class="eyebrow">RECENT ACTIVITY</p><h2>最近记录</h2></div><button class="link-button" data-screen="bills">查看全部</button></div>
+        <div class="activity-list" id="recent-list"></div>
+      </section>
+    </section>
+
+    <section class="screen hidden" id="bills-screen">
+      <div class="page-heading"><p class="eyebrow">YOUR SHARED LIFE</p><h1>账单</h1><p class="muted">每一笔一起生活的记录</p></div>
+      <div class="month-switcher"><button aria-label="上个月">‹</button><strong>September 2026</strong><button aria-label="下个月">›</button></div>
+      <div class="month-summary"><div><span>共同支出</span><strong>¥3,260</strong></div><div><span>小明支付</span><strong>¥1,840</strong></div><div><span>小红支付</span><strong>¥1,420</strong></div></div>
+      <div class="filter-row"><button class="filter active">全部</button><button class="filter">餐饮</button><button class="filter">交通</button><button class="filter">旅行</button></div>
+      <div class="bill-groups" id="bill-list"></div>
+    </section>
+
+    <section class="screen hidden" id="ledgers-screen">
+      <div class="page-heading page-heading-row"><div><p class="eyebrow">SHARED SPACES</p><h1>账本</h1><p class="muted">把不同的故事，放在不同的地方</p></div><button class="round-button" aria-label="添加账本">+</button></div>
+      <div class="ledger-feature" id="travel-ledger">
+        <div class="ledger-image"><span>TOKYO</span><small>OCT 12 — 18</small></div>
+        <div class="ledger-feature-copy"><div><p class="eyebrow">TRIP LEDGER</p><h2>东京，七天</h2><p class="muted">6 笔记录 · 最近更新于今天</p></div><strong>¥8,420</strong></div>
+        <div class="ledger-meta"><span>小明支付 ¥4,960</span><span>小红支付 ¥3,460</span></div>
+      </div>
+      <div class="ledger-list"><div class="ledger-row"><span class="ledger-icon daily">◒</span><div><strong>日常共同账</strong><p>本月 18 笔记录</p></div><b>¥3,260</b><span class="chevron">›</span></div><div class="ledger-row"><span class="ledger-icon goal">◇</span><div><strong>我们的旅行基金</strong><p>¥3,200 / ¥8,000</p></div><b>40%</b><span class="chevron">›</span></div></div>
+    </section>
+
+    <section class="screen hidden" id="profile-screen">
+      <div class="page-heading"><p class="eyebrow">YOUR SPACE</p><h1>我们</h1><p class="muted">只属于你们两个人的设置</p></div>
+      <div class="profile-card"><div class="profile-large"><span class="avatar avatar-you">明</span><span class="profile-line"></span><span class="avatar avatar-her">红</span></div><h2>小明 & 小红</h2><p class="muted">一起生活 428 天</p><button class="outline-button">编辑关系资料</button></div>
+      <div class="settings-list"><button><span>⌁</span><div><strong>安全与隐私</strong><small>Face ID、通知显示</small></div><b>›</b></button><button><span>◎</span><div><strong>默认设置</strong><small>人民币 · 自动平分</small></div><b>›</b></button><button><span>↓</span><div><strong>导出数据</strong><small>CSV 文件</small></div><b>›</b></button></div>
+    </section>
+
+    <nav class="tabbar"><button class="tab active" data-screen="home"><span>⌂</span><small>首页</small></button><button class="tab" data-screen="bills"><span>≡</span><small>账单</small></button><button class="add-tab" id="add-btn" aria-label="记一笔">+</button><button class="tab" data-screen="ledgers"><span>▱</span><small>账本</small></button><button class="tab" data-screen="profile"><span>○</span><small>我们</small></button></nav>
+  </main>
+
+  <div class="sheet-backdrop hidden" id="sheet-backdrop"></div>
+  <section class="sheet hidden" id="expense-sheet" aria-label="快速记账">
+    <div class="sheet-handle"></div><div class="sheet-header"><div><p class="eyebrow">NEW EXPENSE</p><h2>记一笔</h2></div><button class="close-button" id="close-sheet">×</button></div>
+    <label class="amount-input"><span>¥</span><input id="amount" inputmode="decimal" value="0.00" aria-label="金额" /></label>
+    <div class="form-group"><label>谁先付的？</label><div class="choice-grid payer-grid"><button class="choice selected" data-value="我">我的头像 <span class="mini-avatar you">明</span></button><button class="choice" data-value="对方">小红 <span class="mini-avatar her">红</span></button></div></div>
+    <div class="form-group"><label>怎么分？</label><div class="choice-grid split-grid"><button class="choice selected" data-value="平分">平分</button><button class="choice" data-value="我请客">我请客</button><button class="choice" data-value="她请客">她请客</button><button class="choice" data-value="自定义">自定义</button></div></div>
+    <div class="form-group"><label>这是什么？</label><div class="category-row"><button class="category selected" data-category="餐饮"><span>◒</span>餐饮</button><button class="category" data-category="交通"><span>↗</span>交通</button><button class="category" data-category="娱乐"><span>◇</span>娱乐</button><button class="category" data-category="其他"><span>＋</span>其他</button></div></div>
+    <input class="note-input" placeholder="添加备注（可选）" id="note" />
+    <button class="primary-button" id="save-expense">保存这笔</button>
+  </section>
+
+  <section class="sheet hidden" id="settle-sheet" aria-label="结算"><div class="sheet-handle"></div><div class="sheet-header"><div><p class="eyebrow">SETTLEMENT</p><h2>把今天的账，放下</h2></div><button class="close-button close-settle">×</button></div><div class="settle-visual"><div class="settle-avatar avatar-her">红</div><div class="settle-arrow">→</div><div class="settle-avatar avatar-you">明</div></div><p class="settle-question">这次由小红结算给小明</p><div class="settle-big-amount">¥186</div><button class="primary-button" id="confirm-settle">标记为已结算</button><p class="sheet-footnote">原始消费记录会被保留，只更新当前状态</p></section>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

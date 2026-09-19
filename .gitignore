@@ -1,0 +1,6 @@
+# Local and generated files
+work/
+outputs/TongZhang-iOS-source.zip
+*.xcresult/
+DerivedData/
+.DS_Store
