@@ -35,7 +35,7 @@ GitHub Actions 的测试通过后，可以使用云端 macOS 构建服务把签�
 
 操作步骤：
 
-1. 打开本次成功运行记录：[35412406866](https://github.com/wqdeqweqwsad/TongZhang/actions/runs/35412406866)，在页面底部下载 Artifacts 中的 `TongZhang-unsigned-ipa`（约 333 KB）。
+1. 等待最新一次成功运行后，在 GitHub Actions 页面底部下载 Artifacts 中的 `TongZhang-unsigned-ipa`。旧的 `35412406866` 版本可能被 Sideloadly 报 `Invalid file`，请使用打包修复后的新运行版本。
 2. 在 Windows 安装 Sideloadly，选择这个 IPA，输入你自己的 Apple ID，并连接 iPhone。
 3. 按 Sideloadly 提示完成签名和安装；如果 iPhone 提示不受信任，到“设置 > 通用 > VPN 与设备管理”信任对应开发者。
 4. 在女朋友的 iPhone 上重复一次。两部手机必须分别完成签名安装，不能只把已签名 App 文件通过数据线复制过去。
