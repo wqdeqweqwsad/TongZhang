@@ -9,6 +9,7 @@
 - 深色模式主按钮显式使用主题前景色，避免依赖系统自动选择文字颜色。以上布局和颜色改动尚待模拟器验证。
 - 增加 GitHub Actions macOS 云端构建配置，并已在 GitHub Actions 的 iPhone 15 Simulator runner 上完成一次真实编译与 XCTest：run `35411424749`，job 结果为 `success`。仍未完成手动视觉验收和真机安装验收。
 - 明确 iPhone 验收路径：云端签名构建并上传 TestFlight 后，可直接用现有 iPhone 验收；单独的 GitHub Actions 未签名产物不能安装到手机。
+- GitHub Actions 增加设备版未签名 IPA artifact，支持 Windows 使用免费 Apple ID + Sideloadly/AltStore 进行个人体验安装；免费签名有约 7 天刷新和设备数量限制，不能替代 TestFlight。
 - 历史快照补充昵称、头像大小、邀请码及日期范围校验，与编辑入口共用规则；非法快照保留原数据并锁定修改。
 - 邀请码严格要求六位 ASCII 数字，拒绝尾随换行及全角数字；消费拒绝非有限或超出 Foundation 常用日期范围的日期。
 - 新增非法个人资料快照保护及日期校验回归测试代码，尚未运行 XCTest。

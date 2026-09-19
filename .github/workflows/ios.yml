@@ -29,3 +29,26 @@ jobs:
         with:
           name: xcodebuild-log
           path: ${{ runner.temp }}/xcodebuild.log
+
+      - name: Build unsigned device app for free sideloading
+        run: >-
+          xcodebuild build
+          -project TongZhang.xcodeproj
+          -scheme TongZhang
+          -sdk iphoneos
+          -configuration Release
+          -derivedDataPath "$RUNNER_TEMP/DeviceBuild"
+          CODE_SIGNING_ALLOWED=NO
+          CODE_SIGNING_REQUIRED=NO
+
+      - name: Package unsigned IPA
+        run: |
+          mkdir -p "$RUNNER_TEMP/Payload"
+          cp -R "$RUNNER_TEMP/DeviceBuild/Build/Products/Release-iphoneos/TongZhang.app" "$RUNNER_TEMP/Payload/"
+          ditto -c -k --sequesterRsrc --keepParent "$RUNNER_TEMP/Payload" "$RUNNER_TEMP/TongZhang-unsigned.ipa"
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: TongZhang-unsigned-ipa
+          path: ${{ runner.temp }}/TongZhang-unsigned.ipa

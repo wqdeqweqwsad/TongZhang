@@ -27,6 +27,21 @@ GitHub Actions 的测试通过后，可以使用云端 macOS 构建服务把签�
 
 仅用 iPhone 无法直接编译本地 SwiftUI 工程，也不能安装 GitHub Actions 产生的未签名构建产物。若暂时没有 Apple Developer 账户，仍可先用 Actions 验证编译与 XCTest，之后再做 TestFlight 分发。
 
+## 零花费个人安装：免费 Apple ID + Sideloadly
+
+如果只是你和女朋友在自己的手机上体验，可以不购买 Apple Developer Program。GitHub Actions 现在还会生成 `TongZhang-unsigned-ipa` artifact；下载后，在 Windows 使用 Sideloadly（或 AltStore/SideStore）用你自己的免费 Apple ID 签名，再通过 USB 安装到 iPhone。首次安装时按工具提示连接并信任设备，不要把 Apple ID 密码发给任何人或提交到 GitHub。
+
+这种方式不是 TestFlight，限制包括：免费签名通常约 7 天后需要重新签名/刷新；每台设备有免费开发者签名的 App 数量限制；系统更新或证书状态可能要求重新安装。你和女朋友可以分别在各自 iPhone 上安装，但两台手机仍不会因为安装了同一个 App 就自动共享数据。
+
+操作步骤：
+
+1. 打开 GitHub Actions 的成功运行记录，下载 Artifacts 中的 `TongZhang-unsigned-ipa`。
+2. 在 Windows 安装 Sideloadly，选择这个 IPA，输入你自己的 Apple ID，并连接 iPhone。
+3. 按 Sideloadly 提示完成签名和安装；如果 iPhone 提示不受信任，到“设置 > 通用 > VPN 与设备管理”信任对应开发者。
+4. 在女朋友的 iPhone 上重复一次。两部手机必须分别完成签名安装，不能只把已签名 App 文件通过数据线复制过去。
+
+免费安装方案只适合体验当前本地版 MVP。要让两个人的消费真正同步，仍需后续接入 CloudKit 或自建同步服务；要长期稳定分发，则使用 Apple Developer + TestFlight。
+
 ## 运行测试
 
 可使用 Xcode 的 Product > Test。命令行先在项目根目录列出设备：
